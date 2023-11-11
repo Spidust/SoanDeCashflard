@@ -22,7 +22,6 @@ function List(props) {
       {isOpen && (
         <div className="items mx-auto h-[30vh] w-[80%] animate-slide-out overflow-y-auto">
           {props.data.map((i, index) => {
-            console.log(i.type);
             return (
               <div
                 className={classNames(

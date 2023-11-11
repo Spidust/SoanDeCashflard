@@ -8,17 +8,17 @@ function Form(props) {
       <h2 className="title flex w-full cursor-pointer select-none items-center justify-center rounded-md bg-primary py-2 text-center text-2xl font-bold">
         <span>Nhập liệu</span>
       </h2>
-      <div className="question flex">
+      <div className="question flex w-full">
         <label htmlFor="question">Câu hỏi: </label>
         <input
           type="text"
           id="question"
-          className="border-[2px] border-black"
+          className="flex-1 border-[2px] border-black"
           value={props.form.question}
           onChange={(e) => props.setQuestion(e.target.value)}
         />
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className="type flex w-full">
+      <div className="type flex w-full">
         <input
           type="radio"
           id="tl"
@@ -39,7 +39,7 @@ function Form(props) {
           className="ml-10"
         />
         <label htmlFor="tn">Trắc nghiệm</label>
-      </form>
+      </div>
       <div className="answer">
         {props.form.type == 0 ? (
           <FormAnswerTL answer={props.form.answer} />
@@ -59,7 +59,13 @@ function Form(props) {
         )}
       </div>
       <div className="image">
-        <input type="file" name="" id="" />
+        <label htmlFor="image">Hình ảnh: </label>
+        <input
+          type="file"
+          onChange={(e) => props.setImage(e.target.files[0])}
+          accept="image/*"
+          id="image"
+        />
       </div>
     </div>
   );
