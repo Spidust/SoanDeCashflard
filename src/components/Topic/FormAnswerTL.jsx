@@ -1,0 +1,18 @@
+import React from "react";
+
+function FormAnswerTL(props) {
+  return (
+    <div className="tl flex">
+      <label htmlFor="answer">Trả lời</label>
+      <input
+        type="text"
+        id="answer"
+        value={props.answer}
+        onChange={(e) => props.setAnswer(e.target.value)}
+        className="border-[2px] border-black"
+      />
+    </div>
+  );
+}
+
+export default FormAnswerTL;
