@@ -18,6 +18,7 @@ export default {
       },
       colors: {
         primary: "#21ea59",
+        card: "#1b91ff",
       },
     },
     height: {

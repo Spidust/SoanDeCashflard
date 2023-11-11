@@ -2,6 +2,7 @@ import React from "react";
 import List from "./../components/Topic/List";
 import Form from "../components/Topic/Form/Form";
 import { useState, useEffect } from "react";
+import PreviewCard from "./../components/Topic/Card/PreviewCard";
 
 function getBase64(file, setURL) {
   var reader = new FileReader();
@@ -16,7 +17,7 @@ function getBase64(file, setURL) {
 
 function Topic() {
   const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("abc,abc,abc,abc");
+  const [answer, setAnswer] = useState("");
   const [type, setType] = useState(0);
   const [rightAnswer, setRightAnswer] = useState(1);
   const [image, setImage] = useState();
@@ -42,6 +43,8 @@ function Topic() {
       setAnswer(cardList[selecting].answer);
       setType(cardList[selecting].type);
       setRightAnswer(cardList[selecting].rightAnswer);
+      setURL(cardList[selecting].URL);
+      setImage(null);
 
       if (cardList[selecting].type == "tn") {
         setRightAnswer(cardList.value[selecting].rightAnswer);
@@ -54,9 +57,9 @@ function Topic() {
       const newList = cardList.map((i, index) => {
         if (index == selecting) {
           if (type) {
-            i = { question, answer, type, rightAnswer };
+            i = { question, answer, type, rightAnswer, URL };
           } else {
-            i = { question, answer, type };
+            i = { question, answer, type, URL };
           }
         }
 
@@ -64,7 +67,7 @@ function Topic() {
       });
       setCardList(newList);
     }
-  }, [question, answer, type, rightAnswer]);
+  }, [question, answer, type, rightAnswer, URL]);
 
   useEffect(() => {
     if (image) {
@@ -73,7 +76,7 @@ function Topic() {
   }, [image]);
 
   return (
-    <div className="topic h-[100%]">
+    <div className="topic flex h-[100%] flex-wrap">
       <div className="w-full md:w-1/2">
         <List data={cardList} selecting={selecting} select={select} />
         <Form
@@ -84,6 +87,10 @@ function Topic() {
           setRightAnswer={setRightAnswer}
           setImage={setImage}
         />
+      </div>
+
+      <div className="flex w-full justify-center md:w-1/2">
+        <PreviewCard URL={URL} question={question} />
       </div>
     </div>
   );

@@ -42,7 +42,10 @@ function Form(props) {
       </div>
       <div className="answer">
         {props.form.type == 0 ? (
-          <FormAnswerTL answer={props.form.answer} />
+          <FormAnswerTL
+            answer={props.form.answer}
+            setAnswer={props.setAnswer}
+          />
         ) : (
           <FormAnswerTN
             answer={props.form.answer.split(",")}
