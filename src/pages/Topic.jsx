@@ -1,6 +1,6 @@
 import React from "react";
 import List from "./../components/Topic/List";
-import Form from "./../components/Topic/Form";
+import Form from "../components/Topic/Form/Form";
 import { useState, useEffect } from "react";
 
 function getBase64(file, setURL) {
