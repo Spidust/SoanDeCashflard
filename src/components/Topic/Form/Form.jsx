@@ -4,7 +4,7 @@ import FormAnswerTN from "./FormAnswerTN";
 
 function Form(props) {
   return (
-    <div className="form mt-4 flex min-h-[40vh] w-full flex-col justify-around px-2">
+    <div className="form flex min-h-[40vh] w-full flex-col justify-around px-2">
       <h2 className="title flex w-full cursor-pointer select-none items-center justify-center rounded-md bg-primary py-2 text-center text-2xl font-bold">
         <span>Nhập liệu</span>
       </h2>

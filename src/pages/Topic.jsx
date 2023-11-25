@@ -37,8 +37,43 @@ function Topic() {
       answer: "ABC",
       type: 0,
     },
+
+    {
+      question: "Abc",
+      answer: "ABC",
+      type: 0,
+    },
+
+    {
+      question: "Abc",
+      answer: "ABC",
+      type: 0,
+    },
+
+    {
+      question: "Abc",
+      answer: "ABC",
+      type: 0,
+    },
   ]);
 
+  const addOneCard = () => {
+    const copyCardList = [...cardList];
+    copyCardList.push({
+      question: "Abc",
+      answer: "ABC",
+      type: 0,
+    });
+
+    setCardList(copyCardList);
+  };
+
+  const remove = () => {
+    const copyCardList = [...cardList];
+    copyCardList.splice(selecting, 1);
+
+    setCardList(copyCardList);
+  };
   useEffect(() => {
     if (selecting != null) {
       setQuestion(cardList[selecting].question);
@@ -83,7 +118,13 @@ function Topic() {
   return (
     <div className="topic flex h-[100%] flex-wrap">
       <div className="w-full md:w-1/2">
-        <List data={cardList} selecting={selecting} select={select} />
+        <List
+          data={cardList}
+          selecting={selecting}
+          select={select}
+          add={addOneCard}
+          remove={remove}
+        />
         <Form
           form={{ question, answer, type, rightAnswer, image }}
           setType={setType}
