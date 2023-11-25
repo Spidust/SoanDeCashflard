@@ -11,7 +11,9 @@ function FormAnswerTN(props) {
             value={i}
             checked={props.rightAnswer == i}
             id="answer-1"
-            onChange={(e) => props.setRightAnswer(e.target.value)}
+            onChange={() => {
+              if (props.answer[i - 1]) props.setRightAnswer(i);
+            }}
           />
           <input
             type="text"

@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 function PreviewCard(props) {
   return (
-    <div className="card bg-card flex w-4/5 flex-wrap justify-center rounded-xl p-[15px] text-white">
+    <div className="card flex w-4/5 flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
       <img
         src={props.URL}
         alt="image"
@@ -12,7 +12,29 @@ function PreviewCard(props) {
       <div className="question w-full text-center text-[1.2rem]">
         {props.question}
       </div>
-      <FaCheck fontSize={"2rem"} className="cursor-pointer" />
+
+      <div className="flex w-full justify-center">
+        {!props.type ? (
+          <input
+            className="card-input-tl inline-block h-[3ch] w-[calc(var(--character)_*_1ch)] border-b-[5px] border-dashed border-[none] bg-transparent text-[2rem] text-[white] outline-none"
+            style={{ "--character": props.answer.length }}
+          ></input>
+        ) : (
+          <div className="card-input-tn flex w-full flex-wrap">
+            {[0, 1, 2, 3].map((i) => (
+              <div
+                className={
+                  "flex w-1/2 items-center justify-center border-[1px] border-[black] py-4 text-sm" +
+                  (props.rightAnswer - 1 == i ? " bg-[#31da3a]" : "")
+                }
+              >
+                {props.answer.split(",")[i] || "*"}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <FaCheck fontSize={"2rem"} className="cursor-pointer self-end" />
     </div>
   );
 }
