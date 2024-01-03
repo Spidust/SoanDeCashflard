@@ -7,7 +7,7 @@ function App() {
       <Router>
         <Navigate />
         <Routes>
-          <Route path="/" exact={true} element={<Topic />} />
+          <Route path="/" exact element={<Topic />} />
         </Routes>
       </Router>
     </div>

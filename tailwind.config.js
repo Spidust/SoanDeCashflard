@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [require("@tailwindcss/aspect-ratio")],
   theme: {
     extend: {
       animation: {
@@ -25,5 +29,4 @@ export default {
       navbar: "40px",
     },
   },
-  plugins: [],
 };
