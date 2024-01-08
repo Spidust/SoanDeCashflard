@@ -1,10 +1,11 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import Overlay from "./../../Overlay";
 
 function SaveFileModal(props) {
   return (
     <>
-      <div className="overlay fixed left-0 top-0 h-[100vh] w-[100vw] bg-black opacity-30 bg-blend-overlay"></div>
+      <Overlay />
       <div className="save-file-modal fixed left-[50%] top-[50%] z-10 flex h-[50vh] max-h-[250px] w-[90vw] max-w-[400px] translate-x-[-50%] translate-y-[-50%] items-center justify-center rounded-md bg-[#4ba8fa] p-10 shadow">
         <FaTimes
           size={30}

@@ -46,7 +46,7 @@ function Form(props) {
             answer={props.form.answer}
             setAnswer={props.setAnswer}
           />
-        ) : (
+        ) : props.form.type == 1 ? (
           <FormAnswerTN
             answer={props.form.answer.split(",")}
             rightAnswer={props.form.rightAnswer}
@@ -59,13 +59,16 @@ function Form(props) {
               })
             }
           />
-        )}
+        ) : null}
       </div>
       <div className="image">
         <label htmlFor="image">Hình ảnh: </label>
         <input
           type="file"
-          onChange={(e) => props.setImage(e.target.files[0])}
+          onChange={(e) => {
+            props.setImage(e.target.files[0]);
+            e.target.value = "";
+          }}
           accept="image/*"
           id="image"
         />
