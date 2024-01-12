@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
-  corePlugins: {
-    aspectRatio: false,
-  },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [],
   theme: {
     extend: {
       animation: {
-        "slide-out": "slide-out 0.5s ease-out",
+        "slide-out": "slide-out 0.2s ease-out",
       },
       keyframes: {
         "slide-out": {

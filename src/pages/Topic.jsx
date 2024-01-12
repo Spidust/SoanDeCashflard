@@ -1,24 +1,17 @@
 import React from "react";
 
+import Button from "../components/Button";
+
 import List from "./../components/Topic/List";
 import Form from "../components/Topic/Form/Form";
 import PreviewCard from "./../components/Topic/Card/PreviewCard";
-import SaveFileModal from "../components/Topic/Modal/SaveFileModal";
-import ImportFileModal from "./../components/Topic/Modal/ImportFileModal";
+import SaveFileModal from "../components/Topic/Modal/SaveModal";
+import ImportFileModal from "../components/Topic/Modal/ImportModal";
 
 import { useState, useEffect } from "react";
 import saveToFile from "../utils/saveToFile";
 
-function getBase64(file, setURL) {
-  var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = function () {
-    setURL(reader.result);
-  };
-  reader.onerror = function (error) {
-    setURL("ERROR");
-  };
-}
+import getBase64 from "../utils/getBase64";
 
 function Topic() {
   const [savingFile, setSavingState] = useState(false);
@@ -98,20 +91,6 @@ function Topic() {
     setCardList(data);
   };
 
-  const AnswerProcess = (b, f) => {
-    f = f.split(",");
-    let r = 0;
-    for (let i = 0; i < f.length; i++)
-      if (f[i] == b) {
-        r = i;
-        break;
-      }
-    return {
-      r,
-      a: f.join(","),
-    };
-  };
-
   useEffect(() => {
     if (selecting != null) {
       setQuestion(cardList[selecting].question);
@@ -188,18 +167,12 @@ function Topic() {
           />
 
           <div className="control flex w-full justify-around ">
-            <div
-              className="export cursor-pointer rounded-md bg-primary p-4"
-              onClick={() => setSavingState(true)}
-            >
+            <Button onClick={() => setSavingState(true)} color="bg-primary">
               Xuất file
-            </div>
-            <div
-              className="import cursor-pointer rounded-md bg-[#ff4949] p-4"
-              onClick={() => setImportState(true)}
-            >
+            </Button>
+            <Button color="bg-[#ff4949]" onClick={() => setImportState(true)}>
               Nhập file(để chỉnh sửa)
-            </div>
+            </Button>
           </div>
         </div>
         <div className="flex w-full justify-center md:w-1/2">

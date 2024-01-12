@@ -3,7 +3,7 @@ import { FaCheck } from "react-icons/fa";
 
 function PreviewCard(props) {
   return (
-    <div className="card flex w-4/5 flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
+    <div className="card h-full flex max-h-[600px] w-full max-w-[400px] flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
       <img
         src={props.URL}
         alt="image"

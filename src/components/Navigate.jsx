@@ -7,7 +7,7 @@ function Navigate() {
     <div className="navigate mx-auto flex w-fit justify-center rounded-md border-[1px] border-[#ccc]">
       <NavLink
         to="/"
-        exact={true}
+        exact
         className={({ isActive }) =>
           "topic cursor-pointer px-5 py-2 hover:bg-[#a79292] " +
           (isActive ? "bg-[#ccc]" : "")
@@ -17,7 +17,7 @@ function Navigate() {
       </NavLink>
       <NavLink
         to="/merge"
-        exact={true}
+        exact
         className={({ isActive }) =>
           "topic cursor-pointer px-5 py-2 hover:bg-[#a79292] " +
           (isActive ? "bg-[#ccc]" : "")

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import Overlay from "./../../Overlay";
+import Overlay from "../../Overlay";
 
 function SaveFileModal(props) {
   return (
@@ -22,9 +22,10 @@ function SaveFileModal(props) {
           />
           <div
             className="export mt-5 w-full cursor-pointer rounded-md bg-primary p-2 text-center"
-            onClick={() =>
-              props.export(document.getElementById("fileNameInput").value)
-            }
+            onClick={() => {
+              props.export(document.getElementById("fileNameInput").value);
+              props.quit();
+            }}
           >
             Lưu file
           </div>
