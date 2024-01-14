@@ -3,8 +3,24 @@ import { FaTimes } from "react-icons/fa";
 import Overlay from "../../Overlay";
 
 import WatchFileInput from "../../../utils/WatchFileInput";
+import Validate from "./../../../core/Validate";
 
-function HandleImport(data, Import) {}
+function HandleImport(data, Import, quit) {
+  try {
+    data = Object.entries(JSON.parse(data));
+    const finalData = [];
+
+    for (let i of data) {
+      finalData.push([i[0], Validate.Topic(i[1])]);
+    }
+    Import(finalData);
+
+    quit();
+  } catch (e) {
+    alert("Có lỗi đã xảy ra");
+    console.error(e);
+  }
+}
 
 function ImportModal(props) {
   const [input, setInput] = useState("");
@@ -33,9 +49,12 @@ function ImportModal(props) {
             onChange={(e) => setInput(e.target.value)}
           />
 
-          <input type="file" id="file-input" />
+          <input type="file" id="file-input" accept=".json" />
 
-          <div className="export mt-5 w-full cursor-pointer rounded-md bg-primary p-2 text-center">
+          <div
+            className="export mt-5 w-full cursor-pointer rounded-md bg-primary p-2 text-center"
+            onClick={() => HandleImport(input, props.import, props.quit)}
+          >
             Nhập file
           </div>
         </div>

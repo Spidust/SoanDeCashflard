@@ -3,7 +3,9 @@ import React from "react";
 function SaveBtn(props) {
   return (
     <div
-      className={`cursor-pointer rounded-md p-4 ${props.color}`}
+      className={`${props.className} cursor-pointer rounded-md p-${
+        props.padding || "4"
+      } text-center ${props.color}`}
       onClick={props.onClick}
     >
       {props.children}
