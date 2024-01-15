@@ -8,7 +8,7 @@ function FormAnswerTL(props) {
         type="text"
         id="answer"
         value={props.answer}
-        onChange={(e) => props.setAnswer(e.target.value)}
+        onChange={(e) => props.setAnswer(e.target.value.toLowerCase())}
         className="flex-1 border-[2px] border-black"
       />
     </div>
