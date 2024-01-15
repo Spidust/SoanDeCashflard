@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import List from "./../components/Topic/List";
 import Form from "../components/Topic/Form/Form";
 import PreviewCard from "./../components/Topic/Card/PreviewCard";
-import SaveFileModal from "../components/Topic/Modal/SaveModal";
+import SaveFileModal from "../components/SaveModal";
 import ImportFileModal from "../components/Topic/Modal/ImportModal";
 
 import { useState, useEffect } from "react";

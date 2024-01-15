@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import Overlay from "../../Overlay";
+import Overlay from "./Overlay";
 
 function SaveFileModal(props) {
   return (

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import List from "./../components/Merge/List";
 import Control from "./../components/Merge/Control";
 import ImportModal from "../components/Merge/Modal/ImportModal";
-import SaveModal from "../components/Topic/Modal/SaveModal";
+import SaveModal from "../components/SaveModal";
 
 import concatMergeData from "../utils/concatMergeData";
 import saveToFile from "../utils/saveToFile";
+import Copy from "../utils/CopyToClipboard";
 
 function DataProcess(data) {
   const finalData = {};
@@ -22,8 +23,6 @@ function Merge() {
 
   const [importState, setImportState] = useState(false);
   const [exportState, setExportState] = useState(false);
-
-  console.log(DataProcess(data));
 
   return (
     <div className="h-[100%]">
@@ -47,6 +46,15 @@ function Merge() {
         remove={(index) =>
           setData((prev) => prev.filter((i, ind) => ind != index))
         }
+        rename={(index, newName) =>
+          setData((prev) => {
+            prev[index][0] = newName;
+            return prev;
+          })
+        }
+        copy={(index) => {
+          Copy(JSON.stringify(DataProcess([data[index]])));
+        }}
       />
       <Control
         import={() => setImportState(true)}

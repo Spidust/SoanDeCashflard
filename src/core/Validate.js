@@ -1,5 +1,4 @@
-import AnswerProcess from "../utils/AnswerProcess";
-
+import customIndexOf from "../utils/customIndexOf";
 export default class Validate {
   static Card(card) {
     return (
@@ -27,5 +26,16 @@ export default class Validate {
     }
 
     return data;
+  }
+
+  static Name(data, name) {
+    let j = 0;
+    let fname = name;
+
+    while (customIndexOf(data, fname) > -1) {
+      fname = `${name} ${++j}`;
+    }
+
+    return fname;
   }
 }
