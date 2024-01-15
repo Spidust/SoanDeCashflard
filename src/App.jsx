@@ -8,8 +8,8 @@ function App() {
       <Router>
         <Navigate />
         <Routes>
-          <Route path="/" exact element={<Topic />} />
-          <Route element={<Merge />} path="/merge" exact></Route>
+          <Route path="/soan-de/" exact element={<Topic />} />
+          <Route element={<Merge />} path="/soan-de/merge" exact></Route>
         </Routes>
       </Router>
     </div>
