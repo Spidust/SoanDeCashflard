@@ -10,7 +10,7 @@ function handleImport(data, Import, quit) {
     data = JSON.parse(data);
     const [key, value] = Object.entries(data)[0];
 
-    data = Validate.Topic(value);
+    data = Validate.Topic(value, 1);
 
     Import(data);
     quit();

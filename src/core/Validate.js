@@ -1,3 +1,4 @@
+import AnswerProcess from "../utils/AnswerProcess";
 import customIndexOf from "../utils/customIndexOf";
 export default class Validate {
   static Card(card) {
@@ -10,18 +11,45 @@ export default class Validate {
     );
   }
 
-  static Topic(topic) {
+  static Topic(topic, mode = 0) {
     const data = [];
 
-    for (let i of topic) {
-      if (this.Card(i)) {
-        data.push({
-          question: i.question,
-          "answer-b": i["answer-b"],
-          "answer-f": i["answer-f"],
-          type: i.type,
-          image: i.image,
-        });
+    if (mode == 0) {
+      for (let i of topic) {
+        if (this.Card(i)) {
+          data.push({
+            question: i.question,
+            "answer-b": i["answer-b"],
+            "answer-f": i["answer-f"],
+            type: i.type,
+            image: i.image,
+          });
+        }
+      }
+    } else if (mode == 1) {
+      for (let i of topic) {
+        if (this.Card(i)) {
+          let rightAnswer, answer, type;
+
+          if (i.type == "tn") {
+            const { r, a } = AnswerProcess(i["answer-b"], i["answer-f"]);
+            rightAnswer = r;
+            answer = a;
+            type = 1;
+          } else if (i.type == "tl") {
+            rightAnswer = i["answer-b"];
+            answer = i["answer-f"];
+            type = 0;
+          }
+
+          data.push({
+            question: i.question,
+            rightAnswer,
+            answer,
+            type,
+            URL: i.image,
+          });
+        }
       }
     }
 

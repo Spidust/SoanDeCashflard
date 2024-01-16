@@ -17,7 +17,7 @@ function FormAnswerTN(props) {
           />
           <input
             type="text"
-            className="border-[2px] border-black"
+            className="w-[80%] border-[2px] border-black"
             value={props.answer[i - 1]}
             onChange={(e) =>
               props.setAnswer(i - 1, e.target.value.replace(",", ""))
