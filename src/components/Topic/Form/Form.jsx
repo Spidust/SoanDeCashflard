@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import FormAnswerTL from "./FormAnswerTL";
 import FormAnswerTN from "./FormAnswerTN";
 
 function Form(props) {
+  const [isSound, setSound] = useState(false);
   return (
     <div className="form flex min-h-[40vh] w-full flex-col justify-around px-2">
       <h2 className="title flex w-full cursor-pointer select-none items-center justify-center rounded-md bg-primary py-2 text-center text-2xl font-bold">
@@ -39,6 +40,17 @@ function Form(props) {
           className="ml-10"
         />
         <label htmlFor="tn">Trắc nghiệm</label>
+
+        <input
+          type="checkbox"
+          className="ml-10 h-[20px] w-[20px]"
+          checked={isSound}
+          onChange={(e) => setSound(e.target.checked)}
+          id="sound"
+        />
+        <label htmlFor="sound" className="ml-[4px]">
+          Âm thanh
+        </label>
       </div>
       <div className="answer">
         {props.form.type == 0 ? (

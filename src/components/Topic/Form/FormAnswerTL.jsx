@@ -3,7 +3,7 @@ import React from "react";
 function FormAnswerTL(props) {
   return (
     <div className="tl flex w-full">
-      <label htmlFor="answer">Trả lời</label>
+      <label htmlFor="answer">Trả lời: </label>
       <input
         type="text"
         id="answer"

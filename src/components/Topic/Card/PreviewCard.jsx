@@ -1,7 +1,10 @@
 import React from "react";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaSpeakerDeck } from "react-icons/fa";
+import TextToSpeak from "../../../core/TextToSpeech";
 
 function PreviewCard(props) {
+  const sound = new TextToSpeak("en-GB");
+
   return (
     <div className="card h-full flex max-h-[600px] w-full max-w-[400px] flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
       <img
@@ -12,7 +15,6 @@ function PreviewCard(props) {
       <div className="question w-full text-center text-[1.2rem]">
         {props.question}
       </div>
-
       <div className="flex w-full justify-center">
         {!props.type ? (
           <input
@@ -35,6 +37,7 @@ function PreviewCard(props) {
         )}
       </div>
       <FaCheck fontSize={"2rem"} className="cursor-pointer self-end" />
+      <FaSpeakerDeck onClick={() => sound.speak("abc")} />
     </div>
   );
 }
