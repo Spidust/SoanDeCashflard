@@ -1,9 +1,10 @@
 import React from "react";
-import { FaCheck, FaSpeakerDeck } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import TextToSpeak from "../../../core/TextToSpeech";
+import { HiMiniSpeakerWave } from "react-icons/hi2";
 
 function PreviewCard(props) {
-  const sound = new TextToSpeak("en-GB");
+  const sound = new TextToSpeak(props.lang);
 
   return (
     <div className="card h-full flex max-h-[600px] w-full max-w-[400px] flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
@@ -36,8 +37,14 @@ function PreviewCard(props) {
           </div>
         )}
       </div>
-      <FaCheck fontSize={"2rem"} className="cursor-pointer self-end" />
-      <FaSpeakerDeck onClick={() => sound.speak("abc")} />
+      <div className="flex">
+        <FaCheck fontSize={"2rem"} className="cursor-pointer self-end" />
+        <HiMiniSpeakerWave
+          className="ml-4 cursor-pointer self-end"
+          fontSize={"2rem"}
+          onClick={() => sound.speak(props.sentence)}
+        />
+      </div>
     </div>
   );
 }

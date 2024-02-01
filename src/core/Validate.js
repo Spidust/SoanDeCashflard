@@ -17,13 +17,17 @@ export default class Validate {
     if (mode == 0) {
       for (let i of topic) {
         if (this.Card(i)) {
-          data.push({
+          let t = {
             question: i.question,
             "answer-b": i["answer-b"],
             "answer-f": i["answer-f"],
             type: i.type,
             image: i.image,
-          });
+          };
+          if (i.sentence && i.lang) {
+            t = { ...t, sentence: i.sentence, lang: i.lang };
+          }
+          data.push(t);
         }
       }
     } else if (mode == 1) {
@@ -42,13 +46,18 @@ export default class Validate {
             type = 0;
           }
 
-          data.push({
+          let t = {
             question: i.question,
             rightAnswer,
             answer,
             type,
             URL: i.image,
-          });
+          };
+
+          if (i.sentence && i.lang) {
+            t = { ...t, sentence: i.sentence, lang: i.lang };
+          }
+          data.push(t);
         }
       }
     }
