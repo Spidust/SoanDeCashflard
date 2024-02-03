@@ -1,25 +1,23 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import { BiDownArrow, BiRightArrow } from "react-icons/bi";
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import Header from "./Header";
 function List(props) {
   const [isOpen, setOpen] = useState(true);
 
   return (
     <div className="list w-full">
-      <h2
-        className="title flex cursor-pointer select-none items-center rounded-md bg-primary py-2 text-center text-2xl font-bold"
-        onClick={(e) => setOpen((prev) => !prev)}
-      >
+      <Header onClick={(e) => setOpen((prev) => !prev)}>
         <span className="flex-1 text-center">
           Danh sách ({props.data.length})
         </span>{" "}
         {isOpen ? (
-          <BiDownArrow className="mr-3" />
+          <TiArrowSortedDown size={30} className="mr-3" />
         ) : (
-          <BiRightArrow className="mr-3" />
+          <TiArrowSortedUp size={30} className="mr-3" />
         )}
-      </h2>
+      </Header>
       {isOpen && (
         <>
           <div className="control mx-auto mb-3 flex h-[50px] w-full items-center justify-around">

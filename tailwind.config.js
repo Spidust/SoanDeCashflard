@@ -18,8 +18,8 @@ export default {
         },
       },
       colors: {
-        primary: "#21ea59",
-        card: "#1b91ff",
+        primary: "#1ec7b8",
+        card: "#18DAA8",
       },
     },
     height: {

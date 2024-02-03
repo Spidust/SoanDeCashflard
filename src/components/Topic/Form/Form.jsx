@@ -2,13 +2,14 @@ import React from "react";
 import FormAnswerTL from "./FormAnswerTL";
 import FormAnswerTN from "./FormAnswerTN";
 import FormSound from "./FormSound";
+import Header from "../Header";
 
 function Form(props) {
   return (
     <div className="form flex min-h-[40vh] w-full flex-col justify-around px-2">
-      <h2 className="title flex w-full cursor-pointer select-none items-center justify-center rounded-md bg-primary py-2 text-center text-2xl font-bold">
-        <span>Nhập liệu</span>
-      </h2>
+      <Header>
+        <span className="flex w-full justify-center">Nhập liệu</span>
+      </Header>
       <div className="question flex w-full">
         <label htmlFor="question">Câu hỏi: </label>
         <input

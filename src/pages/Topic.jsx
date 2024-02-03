@@ -206,10 +206,18 @@ function Topic() {
           />
 
           <div className="control flex w-full justify-around ">
-            <Button onClick={() => setSavingState(true)} color="bg-primary">
+            <Button
+              onClick={() => setSavingState(true)}
+              color="bg-primary"
+              className="text-white"
+            >
               Xuất file
             </Button>
-            <Button color="bg-[#ff4949]" onClick={() => setImportState(true)}>
+            <Button
+              color="bg-[#ff2530]"
+              onClick={() => setImportState(true)}
+              className="text-white"
+            >
               Nhập file(để chỉnh sửa)
             </Button>
           </div>
