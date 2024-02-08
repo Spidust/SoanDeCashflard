@@ -7,3 +7,7 @@
   user-select: none;
   -moz-user-select: none;
 }
+
+html {
+  overflow-x: hidden;
+}

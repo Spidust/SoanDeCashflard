@@ -39,7 +39,7 @@ function List(props) {
               return (
                 <div
                   className={classNames(
-                    "item mt-2 flex cursor-pointer select-none justify-around border-[2px] py-2",
+                    "item mt-2 grid cursor-pointer select-none grid-flow-row grid-cols-8 border-[2px] py-2",
                     { "bg-[#ccc]": index == props.selecting },
                   )}
                   onClick={(e) => {
@@ -48,11 +48,13 @@ function List(props) {
                   }}
                   key={index}
                 >
-                  <span>{index}</span>
-                  <span className="w-[70%] truncate text-center">
+                  <span className="text-center">{index}</span>
+                  <span className="col-span-5 truncate text-center">
                     {i.question}
                   </span>
-                  <span>{i.type == 0 ? "Tự luận" : "Trắc nghiệm"}</span>
+                  <span className="col-span-2 inline text-center">
+                    {i.type == 0 ? "Tự luận" : "Trắc nghiệm"}
+                  </span>
                 </div>
               );
             })}
