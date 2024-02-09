@@ -19,7 +19,9 @@ export default {
       },
       colors: {
         primary: "#1ec7b8",
+        secondary: "#1eaec7",
         card: "#18DAA8",
+        modal: "#17dbaa",
       },
     },
     height: {
