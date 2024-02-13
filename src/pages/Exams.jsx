@@ -4,7 +4,7 @@ import List from "./../components/Exams/List/List";
 
 function Exams() {
   return (
-    <div classNames="exams w-full h-[100%]">
+    <div className="exams absolute bottom-0 top-[46px] w-full">
       <Control />
       <List />
     </div>

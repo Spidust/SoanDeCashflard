@@ -6,7 +6,7 @@ import Exams from "./pages/Exams";
 
 function App() {
   return (
-    <div className="App h-[100%] w-full">
+    <div className="App relative h-[100%] w-full">
       <Router>
         <Navigate />
         <Routes>
