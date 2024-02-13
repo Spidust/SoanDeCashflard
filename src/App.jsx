@@ -2,6 +2,8 @@ import Navigate from "./components/Navigate";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Topic from "./pages/Topic";
 import Merge from "./pages/Merge";
+import Exams from "./pages/Exams";
+
 function App() {
   return (
     <div className="App h-[100%] w-full">
@@ -9,7 +11,8 @@ function App() {
         <Navigate />
         <Routes>
           <Route path="/soan-de/" exact element={<Topic />} />
-          <Route element={<Merge />} path="/soan-de/merge" exact></Route>
+          <Route element={<Merge />} path="/soan-de/merge"></Route>
+          <Route element={<Exams />} path="/soan-de/exam"></Route>
         </Routes>
       </Router>
     </div>
