@@ -163,7 +163,7 @@ function Topic() {
 
   return (
     <>
-      <div className="topic flex h-[100%] flex-wrap">
+      <div className="topic flex h-[calc(100%-46px)] flex-wrap">
         {savingFile && (
           <SaveFileModal
             quit={() => setSavingState(false)}

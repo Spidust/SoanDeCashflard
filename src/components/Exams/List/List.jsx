@@ -3,8 +3,27 @@ import Item from "./Item";
 
 function List() {
   return (
-    <div className="list mx-auto mt-4 w-4/5 rounded-md border-[1px] border-[#333] p-1">
-      <Item />
+    <div className="list mx-auto mt-4 h-[calc(100%-64px-1rem)] w-4/5 overflow-auto rounded-md border-[1px] border-[#333] p-1">
+      <div className="flex flex-wrap gap-1 ">
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+      </div>
     </div>
   );
 }

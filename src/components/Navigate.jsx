@@ -22,7 +22,7 @@ function Navigate() {
     }
   }, [location]);
   return (
-    <div className="navigate relative mx-auto my-2 flex w-fit justify-center rounded-md bg-primary px-4 text-white">
+    <div className="navigate relative mx-auto mb-2 flex w-fit justify-center rounded-md bg-primary px-4 text-white">
       <a href="/" className="cursor-pointer px-5 py-2">
         <FaHome size={30} />
       </a>
