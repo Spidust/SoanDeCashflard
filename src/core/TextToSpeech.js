@@ -2,6 +2,7 @@ export default class TextToSpeak {
   constructor(lang) {
     this.sys = window.speechSynthesis;
     this.voice = this.getVoice(lang);
+    this.sent = new window.SpeechSynthesisUtterance();
   }
 
   getVoice(lang) {
@@ -16,10 +17,10 @@ export default class TextToSpeak {
     this.voice = this.getVoice(lang);
   }
 
-  speak(content) {
-    const sent = new window.SpeechSynthesisUtterance(content);
-    sent.voice = this.voice;
-
-    this.sys.speak(sent);
+  changeContent(content) {
+    this.sent.text = content;
+  }
+  speak() {
+    this.sys.speak(this.sent);
   }
 }

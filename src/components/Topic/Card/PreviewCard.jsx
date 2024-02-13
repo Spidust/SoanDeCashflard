@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FaCheck } from "react-icons/fa";
 import TextToSpeak from "../../../core/TextToSpeech";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 
 function PreviewCard(props) {
-  const sound = new TextToSpeak(props.lang);
+  const sound = useRef();
 
+  useEffect(() => {
+    sound.current = new TextToSpeak(props.lang);
+  }, []);
+
+  useEffect(() => {
+    sound.current.changeContent(props.sentence);
+  }, [props.sentence]);
+  useEffect(() => {
+    sound.current.changeLang(props.lang);
+  }, [props.lang]);
   return (
     <div className="card h-full flex max-h-[600px] w-full max-w-[400px] flex-wrap justify-center rounded-xl bg-card p-[15px] text-white">
       <img
@@ -42,7 +52,7 @@ function PreviewCard(props) {
         <HiMiniSpeakerWave
           className="ml-4 cursor-pointer self-end"
           fontSize={"2rem"}
-          onClick={() => sound.speak(props.sentence)}
+          onClick={() => sound.current.speak(props.sentence)}
         />
       </div>
     </div>
