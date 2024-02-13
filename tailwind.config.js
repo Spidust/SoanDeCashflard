@@ -24,8 +24,5 @@ export default {
         modal: "#17dbaa",
       },
     },
-    height: {
-      navbar: "40px",
-    },
   },
 };
