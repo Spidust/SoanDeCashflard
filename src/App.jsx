@@ -5,8 +5,37 @@ import Merge from "./pages/Merge";
 import Exams from "./pages/Exams";
 import Login from "./components/Exams/Authen/Login";
 import Register from "./components/Exams/Authen/Register";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+import SaveToken from "./utils/LocalStorage/SaveToken";
+import LoadToken from "./utils/LocalStorage/LoadToken";
+import ClearToken from "./utils/LocalStorage/ClearToken";
+
+import UserAPI from "./API/User";
+import { setUser } from "./redux/UserSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    LoadToken(dispatch);
+  }, []);
+
+  useEffect(() => {
+    SaveToken();
+    if (auth.token) {
+      UserAPI.get().then((result) => {
+        if (Number.isInteger(result)) {
+          return ClearToken(dispatch);
+        }
+        dispatch(setUser(result));
+      });
+    }
+  }, [auth]);
+
   return (
     <div className="App relative h-[100%] w-full">
       <Router>
