@@ -8,8 +8,9 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
   const token = store.getState().auth.token;
   if (!token) return config;
+  config.headers["Content-Type"] = "application/json";
   config.headers.Authorization = `Bearer ${token}`;
-
+  config.validateStatus = () => true;
   return config;
 });
 export default instance;

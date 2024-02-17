@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -13,7 +13,7 @@ function Register() {
   }, [auth]);
 
   return (
-    <div className="register fixed left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col bg-white px-10 py-16 shadow-md">
+    <div className="register lg-[40%] fixed left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col bg-white px-10 py-16 shadow-md md:w-[60%] lg:w-[40%]">
       <div className="header text-center text-xl font-bold">Đăng Ký</div>
       <input
         type="text"

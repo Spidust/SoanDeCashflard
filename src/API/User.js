@@ -1,7 +1,11 @@
 import axios from "./axios";
 
-class UserAPI {
-  async get() {
+export default class UserAPI {
+  /**
+   *
+   * @returns {Promise<number> || Promise<user>}
+   */
+  static async get() {
     const res = await axios.get("/auth/");
     const data = res.data;
     if (!data.sucess) {
@@ -10,22 +14,31 @@ class UserAPI {
     return data.result;
   }
 
-  async login(username, password) {
-    const res = await axios.post("/auth/login", {
-      data: {
+  /**
+   *
+   * @param {string} username
+   * @param {string} password
+   * @returns {Promise<number> || Promise<string>}
+   */
+  static async login(username, password) {
+    try {
+      const res = await axios.post("/auth/login", {
         username,
         password,
-      },
-    });
-    const data = res.data;
-
-    if (!data.sucess) {
-      return res.status;
+      });
+      return res.data.token;
+    } catch (error) {
+      return error.response.status;
     }
-    return data.result;
   }
-
-  async register(username, password, display_name) {
+  /**
+   *
+   * @param {string} username
+   * @param {string} password
+   * @param {string} display_name
+   * @returns {Promise<number>|| Promise<string>}
+   */
+  static async register(username, password, display_name) {
     const res = await axios.post("/auth/register", {
       data: {
         username,
@@ -38,8 +51,6 @@ class UserAPI {
       if (data.message == "User already exists") return data.message;
       return res.status;
     }
-    return data.result;
+    return data.token;
   }
 }
-
-export default new UserAPI();
