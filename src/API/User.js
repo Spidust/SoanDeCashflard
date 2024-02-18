@@ -39,18 +39,16 @@ export default class UserAPI {
    * @returns {Promise<number>|| Promise<string>}
    */
   static async register(username, password, display_name) {
-    const res = await axios.post("/auth/register", {
-      data: {
+    try {
+      const res = await axios.post("/auth/register", {
         username,
         password,
         display_name,
-      },
-    });
+      });
 
-    if (!data.sucess) {
-      if (data.message == "User already exists") return data.message;
-      return res.status;
+      return res.data.token;
+    } catch (error) {
+      return error.response.status;
     }
-    return data.token;
   }
 }

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormValidate from "../../../core/FormValidate";
 import UserAPI from "../../../API/User";
 import { setToken } from "../../../redux/AuthSlice";
+import Input from "./Input";
 
 function Login() {
   const auth = useSelector((state) => state.auth);
@@ -34,6 +35,11 @@ function Login() {
         "Tên người dùng chỉ chưa chữ cái tiếng anh và _",
       );
     }
+    if (!FormValidate.LessThanNchar(20, username)) {
+      return setDisplay_nameNotify(
+        "Tên người dùng không được dài quá 50 ký tự",
+      );
+    }
     setUsernameNotify("");
   };
   const validatePassword = () => {
@@ -55,6 +61,7 @@ function Login() {
         "Có một lỗi đã làm bạn dừng lại trên đường đời tấp nập, liệu có một lời cảm ơn nào?",
       );
     }
+    setErrorNotify("");
     console.clear();
   };
   return (
@@ -63,13 +70,9 @@ function Login() {
       {errorNotify && (
         <div className="error bg-[red] p-3 text-white">{errorNotify}</div>
       )}
-      <input
+      <Input
         type="text"
-        className={`password mt-3 rounded-full border-[1px] ${
-          (usernameNotify.length && currentInput != "username") > 0
-            ? "border-[red]"
-            : "border-[#ccc]"
-        } px-4 py-3 focus:outline-none`}
+        error={usernameNotify.length && currentInput != "username"}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Tên người dùng"
         onFocus={() => {
@@ -86,23 +89,36 @@ function Login() {
         </div>
       )}
 
-      <input
-        type="password"
-        className={`password mt-3 rounded-full border-[1px] ${
-          (passwordNotify.length && currentInput != "password") > 0
-            ? "border-[red]"
-            : "border-[#ccc]"
-        } px-4 py-3 focus:outline-none`}
-        placeholder="Mật khẩu"
-        onChange={(e) => setPassword(e.target.value)}
-        onFocus={() => {
-          setCurrentInput("password");
-        }}
-        onBlur={() => {
-          setCurrentInput("");
-          validatePassword();
-        }}
-      />
+      <div className="mt-3 flex w-full items-center">
+        <Input
+          type={show ? "test" : "password"}
+          className="mt-0 flex-1"
+          value={password}
+          error={passwordNotify.length && currentInput != "password"}
+          placeholder="Mật khẩu"
+          onChange={(e) => setPassword(e.target.value)}
+          onFocus={() => {
+            setCurrentInput("password");
+          }}
+          onBlur={() => {
+            setCurrentInput("");
+            validatePassword();
+          }}
+        />
+        {show ? (
+          <FaEye
+            size={25}
+            className="ml-1 cursor-pointer"
+            onClick={() => setShow(false)}
+          />
+        ) : (
+          <FaEyeSlash
+            size={25}
+            className="ml-1 cursor-pointer"
+            onClick={() => setShow(true)}
+          />
+        )}
+      </div>
       {currentInput != "password" && (
         <div className="notify ml-2 text-sm font-thin text-[red]">
           {passwordNotify}
