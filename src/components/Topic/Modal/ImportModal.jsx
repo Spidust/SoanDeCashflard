@@ -25,7 +25,7 @@ function ImportFileModal(props) {
     if (document.getElementById("file-input")) {
       WatchFileInput(setInput);
     }
-  });
+  }, []);
   return (
     <>
       <Overlay />

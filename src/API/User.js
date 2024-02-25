@@ -3,7 +3,7 @@ import axios from "./axios";
 export default class UserAPI {
   /**
    *
-   * @returns {Promise<number> || Promise<user>}
+   * @returns {Promise<number> | Promise<user>}
    */
   static async get() {
     const res = await axios.get("/auth/");
@@ -18,7 +18,7 @@ export default class UserAPI {
    *
    * @param {string} username
    * @param {string} password
-   * @returns {Promise<number> || Promise<string>}
+   * @returns {Promise<number> | Promise<string>}
    */
   static async login(username, password) {
     try {
@@ -36,7 +36,7 @@ export default class UserAPI {
    * @param {string} username
    * @param {string} password
    * @param {string} display_name
-   * @returns {Promise<number>|| Promise<string>}
+   * @returns {Promise<number>| Promise<string>}
    */
   static async register(username, password, display_name) {
     try {

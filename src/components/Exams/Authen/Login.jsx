@@ -6,7 +6,7 @@ import FormValidate from "../../../core/FormValidate";
 import UserAPI from "../../../API/User";
 import { setToken } from "../../../redux/AuthSlice";
 import Input from "./Input";
-
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 function Login() {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -27,6 +27,7 @@ function Login() {
   const [currentInput, setCurrentInput] = useState("");
   const [errorNotify, setErrorNotify] = useState("");
 
+  const [show, setShow] = useState(false);
   const validateUsername = () => {
     if (FormValidate.LessThanNchar(1, username))
       return setUsernameNotify("Tên người dùng không được để trống");

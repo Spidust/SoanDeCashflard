@@ -1,10 +1,10 @@
 import React from "react";
 
-function SaveBtn(props) {
+function Button(props) {
   return (
     <div
-      className={`${props.className || ""} cursor-pointer rounded-md p-${
-        props.padding || "3"
+      className={`${props.className || ""} cursor-pointer rounded-md ${
+        props.padding || "p-3"
       } text-center ${props.color}`}
       onClick={props.onClick}
     >
@@ -13,4 +13,4 @@ function SaveBtn(props) {
   );
 }
 
-export default SaveBtn;
+export default Button;

@@ -3,6 +3,7 @@ import Control from "./../components/Exams/Control";
 import List from "./../components/Exams/List/List";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import CreateModal from "./../components/Exams/Modal/CreateModal";
 
 function Exams() {
   const auth = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ function Exams() {
   }, [auth]);
   return (
     <div className="exams mt-6 h-[calc(100%-46px-1.5rem)] w-full">
+      <CreateModal />
       <Control />
       <List />
     </div>
