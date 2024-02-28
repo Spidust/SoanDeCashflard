@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    SaveToken();
+    SaveToken(auth.token);
     if (auth.token) {
       UserAPI.get().then((result) => {
         if (Number.isInteger(result)) {

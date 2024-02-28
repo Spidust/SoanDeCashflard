@@ -1,9 +1,13 @@
 import React from "react";
 import { FaSearch, FaPlus } from "react-icons/fa";
-function Control() {
+
+function Control(props) {
   return (
     <div className="control mx-auto flex w-fit items-center gap-3 rounded-md bg-primary px-6 py-3 text-white">
-      <div className="create-btn h-full cursor-pointer rounded-md px-2 py-2 hover:bg-secondary">
+      <div
+        className="create-btn h-full cursor-pointer rounded-md px-2 py-2 hover:bg-secondary"
+        onClick={props.open}
+      >
         <FaPlus size={23} />
       </div>
       <input

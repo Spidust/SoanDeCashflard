@@ -1,5 +1,5 @@
 import { setToken } from "../../redux/AuthSlice";
 
-export default function (dispatch) {
+export default function ClearToken(dispatch) {
   dispatch(setToken(""));
 }
