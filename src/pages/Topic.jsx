@@ -70,7 +70,7 @@ function Topic() {
           }
         })(),
         "answer-b":
-          i.type == 0 ? i.answer : i.answer.split(",")[i.rightAnswer - 1],
+          i.type == 0 ? i.answer : i.answer.split(",")[i.rightAnswer],
         type: i.type ? "tn" : "tl",
         image: i.URL,
       };
@@ -79,8 +79,8 @@ function Topic() {
         t = { ...t, sentence: i.sentence, lang: i.lang };
       }
       return t;
-    })),
-      saveToFile(JSON.stringify(exportedData), name, "json");
+    }));
+    saveToFile(JSON.stringify(exportedData), name, "json");
   };
 
   const resetState = () => {

@@ -11,6 +11,7 @@ function handleImport(data, Import, quit) {
     const [key, value] = Object.entries(data)[0];
 
     data = Validate.Topic(value, 1);
+    console.log(data);
     Import(data);
     quit();
   } catch (e) {
@@ -42,7 +43,7 @@ function ImportFileModal(props) {
             type="text"
             className="w-full rounded-sm p-[10px] focus:outline-none"
             placeholder="Nội dung"
-            value={input}
+            value={input.length > 100 ? input.substring(0, 100) : input}
             onChange={(e) => setInput(e.target.value)}
           />
 
