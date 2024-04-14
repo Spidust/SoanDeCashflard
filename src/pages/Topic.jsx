@@ -70,7 +70,7 @@ function Topic() {
           }
         })(),
         "answer-b":
-          i.type == 0 ? i.answer : i.answer.split(",")[i.rightAnswer],
+          i.type == 0 ? i.answer : i.answer.split(",")[i.rightAnswer-1],
         type: i.type ? "tn" : "tl",
         image: i.URL,
       };

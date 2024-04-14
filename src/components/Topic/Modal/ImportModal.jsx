@@ -11,7 +11,6 @@ function handleImport(data, Import, quit) {
     const [key, value] = Object.entries(data)[0];
 
     data = Validate.Topic(value, 1);
-    console.log(data);
     Import(data);
     quit();
   } catch (e) {
