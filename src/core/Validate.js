@@ -1,5 +1,6 @@
 import AnswerProcess from "../utils/AnswerProcess";
 import customIndexOf from "../utils/customIndexOf";
+import { store } from "../redux/store";
 export default class Validate {
   static Card(card) {
     return (
@@ -37,7 +38,7 @@ export default class Validate {
 
           if (i.type == "tn") {
             const { r, a } = AnswerProcess(i["answer-b"], i["answer-f"]);
-            rightAnswer = r+1;
+            rightAnswer = r + 1;
             answer = a;
             type = 1;
           } else if (i.type == "tl") {
@@ -74,5 +75,35 @@ export default class Validate {
     }
 
     return fname;
+  }
+
+  static TopicName(name, parentId) {
+    if (!name || !parentId) {
+      return 1;
+    }
+
+    const topic = store.getState().topic[parentId];
+
+    if (topic) {
+      for (let value of topic) {
+        if (value.name == name) {
+          return 0;
+        }
+      }
+    }
+
+    return 2;
+  }
+  static JSONStructure(json) {
+    if (
+      !json.question ||
+      !json.image ||
+      !json["answer-f"] ||
+      !json["answer-b"] ||
+      !json.type
+    ) {
+      return false;
+    }
+    return true;
   }
 }
